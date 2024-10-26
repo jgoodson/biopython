@@ -25,11 +25,10 @@ jobs:
       - run:
           name: Installation
           command: |
-            python setup.py sdist --formats=gztar
+            python -m build --sdist
             echo "Built tar-ball, will now use that to test manifest..."
             tar -zxvf dist/biopython-*.tar.gz
-            cd biopython-*/
-            python setup.py bdist_wheel
+            python -m build --wheel
             echo "Built wheel and installing it..."
             python -m pip install dist/biopython-*.whl
             echo "Biopython should now be installed"

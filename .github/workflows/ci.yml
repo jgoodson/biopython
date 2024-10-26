@@ -109,7 +109,7 @@ jobs:
 
     - name: Package tarball
       run: |
-        python setup.py sdist --formats=gztar,zip
+        python -m build --sdist
 
   build_wheels:
     needs: [style]
@@ -133,7 +133,7 @@ jobs:
 
     - name: Build wheel
       run: |
-        python setup.py bdist_wheel
+        python -m build --wheel
 
     # - name: Archive wheels
     #   uses: actions/upload-artifact@v2

@@ -1,0 +1,126 @@
+[project]
+name="biopython"
+authors=[{name = "The Biopython Contributors", email = "biopython@biopython.org" }]
+description="Freely available tools for computational molecular biology."
+readme="README.rst"
+classifiers=[
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: Freely Distributable",
+    # Technically the "Biopython License Agreement" is not OSI approved,
+    # but is almost https://opensource.org/licenses/HPND so might put:
+    # 'License :: OSI Approved',
+    # To resolve this we are moving to dual-licensing with 3-clause BSD:
+    # 'License :: OSI Approved :: BSD License',
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dynamic  = ["version"]
+dependencies = ["numpy"]
+requires-python = ">= 3.9"
+
+[project.urls]
+Hompage =" https://biopython.org/"
+Documentation = "https://biopython.org/wiki/Documentation"
+Source = "https://github.com/biopython/biopython/"
+Tracker = "https://github.com/biopython/biopython/issues"
+
+[build-system]
+requires = [
+    "setuptools >= 74.1",
+]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+ext-modules = [
+    { name = "Bio.Align._codonaligner", sources = ["Bio/Align/_codonaligner.c"] },
+    { name = "Bio.Align._pairwisealigner", sources = ["Bio/Align/_pairwisealigner.c"]},
+    { name = "Bio.Align._aligncore", sources = ["Bio/Align/_aligncore.c"]},
+    { name = "Bio.cpairwise2", sources = ["Bio/cpairwise2module.c"]},
+    { name = "Bio.Nexus.cnexus", sources = ["Bio/Nexus/cnexus.c"]},
+    { name = "Bio.motifs._pwm", sources = ["Bio/motifs/_pwm.c"]},
+    { name = "Bio.Cluster._cluster", sources = ["Bio/Cluster/cluster.c", "Bio/Cluster/clustermodule.c"], extra-compile-args=["-DCLUSTER_USE_PYTHON_MEMORY"]},
+    { name = "Bio.PDB.ccealign", sources = ["Bio/PDB/ccealignmodule.c"]},
+    { name = "Bio.PDB.kdtrees", sources = ["Bio/PDB/kdtrees.c"]},
+    { name = "Bio.PDB._bcif_helper", sources = ["Bio/PDB/bcifhelpermodule.c"]},
+    { name = "Bio.SeqIO._twoBitIO", sources = ["Bio/SeqIO/_twoBitIO.c"]},
+]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = [
+    "Bio",
+    "Bio.Affy",
+    "Bio.Align",
+    "Bio.Align.Applications",
+    "Bio.Align.substitution_matrices",
+    "Bio.AlignIO",
+    "Bio.Alphabet",
+    "Bio.Application",
+    "Bio.Blast",
+    "Bio.CAPS",
+    "Bio.Cluster",
+    "Bio.codonalign",
+    "Bio.Compass",
+    "Bio.Data",
+    "Bio.Emboss",
+    "Bio.Entrez",
+    "Bio.ExPASy",
+    "Bio.GenBank",
+    "Bio.Geo",
+    "Bio.Graphics",
+    "Bio.Graphics.GenomeDiagram",
+    "Bio.HMM",
+    "Bio.KEGG",
+    "Bio.KEGG.Compound",
+    "Bio.KEGG.Enzyme",
+    "Bio.KEGG.Gene",
+    "Bio.KEGG.Map",
+    "Bio.PDB.mmtf",
+    "Bio.KEGG.KGML",
+    "Bio.Medline",
+    "Bio.motifs",
+    "Bio.motifs.applications",
+    "Bio.motifs.jaspar",
+    "Bio.Nexus",
+    "Bio.NMR",
+    "Bio.Pathway",
+    "Bio.Pathway.Rep",
+    "Bio.PDB",
+    "Bio.phenotype",
+    "Bio.PopGen",
+    "Bio.PopGen.GenePop",
+    "Bio.Restriction",
+    "Bio.SCOP",
+    "Bio.SearchIO",
+    "Bio.SearchIO._model",
+    "Bio.SearchIO.BlastIO",
+    "Bio.SearchIO.HHsuiteIO",
+    "Bio.SearchIO.HmmerIO",
+    "Bio.SearchIO.ExonerateIO",
+    "Bio.SearchIO.InterproscanIO",
+    "Bio.SeqIO",
+    "Bio.SeqUtils",
+    "Bio.Sequencing",
+    "Bio.Sequencing.Applications",
+    "Bio.SVDSuperimposer",
+    "Bio.SwissProt",
+    "Bio.TogoWS",
+    "Bio.Phylo",
+    "Bio.Phylo.Applications",
+    "Bio.Phylo.PAML",
+    "Bio.UniGene",
+    "Bio.UniProt",
+    # Other top level packages,
+    "BioSQL",
+]
